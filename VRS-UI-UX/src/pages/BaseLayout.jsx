@@ -60,7 +60,7 @@ export const BaseLayout = () => {
         <nav className=" bg-primary  w-100 navbar navbar-expand-lg">
         <div className="container-fluid">
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"></span>
                 </button>
         <div className="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
       <div className="navbar-nav text">
