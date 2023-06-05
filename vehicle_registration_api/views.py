@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from rest_framework import generics,permissions,status
 from rest_framework.response import Response
-
+from django.contrib.auth.models import User
+from .serializers import *
 import requests,re
+
 from bs4 import BeautifulSoup
 # Create your views here.
 
@@ -54,3 +56,8 @@ class NoticeView(generics.GenericAPIView):
         notice = self.parse_content()
 
         return Response(data=notice,status=status.HTTP_200_OK)
+
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (permissions.AllowAny,)
