@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type ="text/css">  
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type ="text/css">
+    <style>
+        td{
+            font-size: small;
+        }
+        
+        .featured__controls {
+	text-align: center;
+	margin-bottom: 50px;
+}
+.featured__controls ul li {
+	list-style: none;
+	font-size: 18px;
+	color: #1c1c1c;
+	display: inline-block;
+	margin-right: 25px;
+	position: relative;
+	cursor: pointer;
+}
+.featured__controls ul li.active:after {
+	opacity: 1;
+    }
+
+.featured__controls ul li:after {
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	width: 100%;
+	height: 2px;
+	background: #7fad39;
+	content: "";
+	opacity: 0;
+}
+
+.featured__controls ul li:last-child {
+	margin-right: 0;
+}
+
+    </style>
+    </head>
+    <body>
+    <div class="container w-100">
+        <div class="row my-4 border border-md pd-2">
+            <div class="col-sm-12 col-md-3">
+                <img src="{% static 'img/gov-logo.png' %}" style="width:110px;height:80px"/>
+            </div>
+            <div class="col-sm-12 col-md-6 text-center">
+                <small class="text text-danger">
+                    Government of Nepal <br/>
+                    Ministry of Physical Infrastructure and Transport
+                </small>
+                <h4 class="text text-danger">Department of Transport Management</h4>
+                <span class="text text-danger fs-6">Minbhawan, Kathmandu</span>
+            </div>
+            <div class="col-12 text-center bg-primary text-white">
+                Single Vehicle Registration List
+            </div>
+        </div>
+            <div class="row border border-md  my-2 p-1 featured__filter">
+                {% include 'alertmessages.html' %}
+                <div class="col-12">
+                    <div class="featured__controls bg-body-tertiary">
+                    <ul>
+                        <li  data-filter="*" class="active" selected> All</li>
+                        <li data-filter=".submitted">Submitted</li>
+                        <li  data-filter=".pending">Pending</li>
+                        <li  data-filter=".rejected">Rejected</li>
+                        <li  data-filter=".verified">Verified</li>
+                        <li  data-filter=".registered">Registered</li>
+                    </ul>
+                    </div>
+                </div>
+                {% for vrs in vrs_single_list %}
+                <div class="col-6  mix {{vrs.status}}">
+                    {% if vrs.status == 'registered' or vrs.status == 'verified' or vrs.status == 'submitted' %}
+                    <div class="card border-success">
+                    {% elif vrs.status == 'pending' %}
+                    <div class="card border-warning">
+                    {% elif vrs.status == 'rejected' %}
+                    <div class="card border-danger">
+                    {% endif %}
+                        <div class="card-header">
+                            ID: <span class="text text-primary">{{vrs.vrsId}}</span>  <br/>
+                            Submitted: <span class="text text-primary">{{vrs.create_at}}</span>  
+                        </div>
+                        <div class="card-body">
+                          <h6 class="card-title"><span class="text text-muted me-2">Applicant:</span> {{vrs.user.first_name}} ( {{vrs.user.username}} )</h6>
+                          <h6 class="card-text"><span class="text text-muted me-2">Registration for:</span> {{vrs.vrs_applicant_of}} </h6>
+                          <h6 class="card-text"><span class="text text-muted me-2">Registration type:</span> {{vrs.vrs_type}} </h6>
+                          <h6 class="card-text"><span class="text text-muted me-2">Applied to:</span> {{vrs.vrs_office}} </h6>
+                          <h6 class="card-text"><span class="text text-muted me-2">Vehicle class:</span> {{vrs.vrs_vehicle_class}} </h6>
+                          <h6 class="card-text"><span class="text text-muted me-2">Vehicle model:</span> {{vrs.vrs_vehicle_model}} </h6>
+                            <div class="card-footer">
+                                Status:<span class="text text-muted mx-2">{{vrs.status}}</span>
+                                <a href="{% url 'review_vrs' vrs.id %}" class="btn btn-primary btn-sm">review</a>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                {% endfor %}
+            <!-- </div> -->
+            </div>
+        </div>
+    </body>
+   
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/mixitup.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/axios.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</html>

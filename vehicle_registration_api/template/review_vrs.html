@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type ="text/css">  
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type ="text/css">
+    <style>
+        td{
+            font-size: small;
+        }
+
+        img {
+            height: 400px;
+            width:400px;
+        }
+    </style>
+    </head>
+    <body>
+    <div class="container w-100">
+        <div class="row my-4 border border-md pd-2">
+            <div class="col-sm-12 col-md-3">
+                <img src="{% static 'img/gov-logo.png' %}" style="width:110px;height:80px"/>
+            </div>
+            <div class="col-sm-12 col-md-6 text-center">
+                <small class="text text-danger">
+                    Government of Nepal <br/>
+                    Ministry of Physical Infrastructure and Transport
+                </small>
+                <h4 class="text text-danger">Department of Transport Management</h4>
+                <span class="text text-danger fs-6">Minbhawan, Kathmandu</span>
+            </div>
+            <div class="col-12 text-center bg-primary text-white">
+                Review The Documents and Informations ID: {{vrs.vrsId}}
+            </div>
+            
+            <div class="col-12 my-2">
+                <div class="col-12 bg-primary text-white"> Citizen Document</div>
+                <div class="d-flex justify-content-center">
+                <img class="img-fluid" src="{{vrs.citizen_doc_img.url}}"/>
+                </div>
+            </div>
+            
+            <div class="col-12 my-2 ">
+                <div class="col-12 bg-primary text-white"> Engine Image</div>
+                <div class="d-flex justify-content-center">
+                <img class="img-fluid" src="{{vrs.engine_img.url}}"/>
+                </div>
+            </div>
+            
+            <div class="col-12 my-2">
+                <div class="col-12 bg-primary text-white"> Chasis Image</div>
+                <div class="d-flex justify-content-center">
+                <img class="img-fluid" src="{{vrs.chasis_img.url}}"/>
+                </div>
+            </div>
+            
+            <div class="col-12 my-2">
+                <div class="col-12 bg-primary text-white"> Vehicle Photo</div>
+                <div class="d-flex justify-content-center">
+                <img class="img-fluid" src="{{vrs.vehicle_img.url}}"/>
+                </div>
+            </div>
+            
+            <div class="col-12  my-2 ">
+                <div class="col-12 bg-primary text-white"> Custom Document</div>
+                <div class="d-flex justify-content-center">
+                    <img class="img-fluid" src="{{vrs.custom_related_img.url}}"/>
+                </div>
+            </div>
+
+            <div class="col-12 my-2 ">
+                <div class="col-12 bg-primary text-white">Bill Image</div>
+                <div class="d-flex justify-content-center">
+                <img class="img-fluid" src="{{vrs.bill_img.url}}"/>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="col-12  bg-primary text-white">
+                    Review
+                </div>
+                <form method="POST">
+                {% csrf_token %}
+                <div class="my-2">
+                    <label class="form-lable">Set Status</label>
+                    <select name="status" class="form-control">
+                        <option value="pending" class="text text-warning" selected>Pending</option>
+                        <option value="rejected" class="text text-danger">Rejected</option>
+                        <option value="verified" class="text text-success">Verified</option>
+                    </select>
+                  </div>
+                  <input disabeled style="display:none;" value="{{vrs.vrsId}}" name="vrsID"/>
+                  <input disabeled style="display:none;" value="{{vrs.user.id}}" name="uid"/>
+
+                  <div class="col-12" id="review">
+                  <div class="col-12 my-2">
+                    <div class="col-12  bg-primary text-white">
+                        Review Comments
+                    </div>
+                    <div class="col-12 my-2">
+                        <textarea required class="form-control" name="comments" rows="5"></textarea>
+                    </div>
+                  </div> 
+                  <div class="col-12 my-2">
+                    <input class="btn btn-primary" type="submit" value="Submit Review" >
+                  </div>
+                </div>
+                </form>
+            </div>
+          
+        </div>
+    </div>
+</body>
+</html>

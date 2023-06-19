@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="static/css/font-awesome.min.css" type="text/css">
+        <style>
+                td {
+    text-align: center;
+    }
+        </style>
+    </head>
+    <body>
+    <div class="container w-100">
+            
+        <div class="row my-4 border border-md pd-2">
+            <div class="col-sm-12 col-md-3" style="margin:4px;">
+                <img src="static/img/gov-logo.png" style="width:110px;height:80px;"/>
+            </div>
+            <div class="col-sm-12 col-md-6 text-center">
+                <small class="text text-danger" style="color:red;">
+                    Government of Nepal <br/>
+                    Ministry of Physical Infrastructure and Transport
+                </small>
+                <h4 class="text text-danger">Department of Transport Management</h4>
+                <span class="text text-danger fs-6">Minbhawan, Kathmandu</span>
+            </div>
+            <div class="col-12 text-center bg-primary text-white" style="color:white;background-color: #0D6EFD; padding: 2px;">
+                <h2 class="text text-white pd-2" >Single Vehicle Registration Payment Receipt</h2>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <h5 class="text text-muted">VRS ID: <span class="text text-success">{{vrs.vrsId}}</span></h5>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <h5 class="text text-muted">Applicant Full Name: <span class="text text-success">{{vrs.user.first_name}} {{vrs.user.last_name}}</span></h5>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <h5 class="text text-muted">Applicant Contact: <span class="text">{{vrs.user.username}}</span></h5>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <h5 class="text text-muted">Transaction ID: <span class="text">{{khalti_tx.idx}}</span></h5>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <h5 class="text text-muted">Transaction Method: <span class="text">E-wallet</span></h5>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <h5 class="text text-muted">Transaction Date: <span class="text">{{khalti_tx.create_at|date:"M d, Y"}}</span></h5>
+            </div>
+            <div class="col-12">
+                <hr style="border-top:2px dashed">
+            </div>
+            <div class="col-12">
+                <table class="table text text-center">
+                    <thead>
+                        <tr>
+                            <th>Registration of</th>
+                            <th> Registration type </th>
+                            <th>Registration office</th>
+                            <th>Category</th>
+                            <th>Class</th>
+                            <th>Model</th>
+                        </tr>
+                    </thead>
+                        <tr>
+                            <td>{{vrs.vrs_applicant_of}}</td>
+                            <td>{{vrs.vrs_type}}</td>
+                            <td>{{vrs.vrs_office}}</td>
+                            <td>{{vrs.vrs_vehicle_cat}}</td>
+                            <td>{{vrs.vrs_vehicle_class}}</td>
+                            <td>{{vrs.vrs_vehicle_model}}</td>
+                        </tr>
+                </table>
+            </div>
+            <div class="col-12">
+                <hr style="border-top:2px dashed">
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <h5 class="text text-muted">Amount: <span class="text text-warning" style="color:gold;">Rs.{{amount}}</span></h5>
+            </div>
+            <div class="col-12 border border-md text-center p-2">
+                For any information you can contact at:
+                <div class="col-md-12 text-center">
+                    Email: <a class="text text-primary" href="mailto:info@dotm.gov.np">info@dotm.gov.np</a>          
+                </div>
+                <div class="col-md-12 text-center">
+                    Contact: <span class="text-danger">01-4574921 ,  01-4574922 </span>         
+                </div>
+    
+            </div>
+        </div>
+        
+
+    </div>
+    </body>
+</html>
