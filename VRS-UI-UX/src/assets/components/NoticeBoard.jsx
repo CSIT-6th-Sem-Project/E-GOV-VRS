@@ -10,7 +10,7 @@ export const NoticeBoard = () => {
     const dispatch = useDispatch();
     let [ Notices , setNotices] = useState([]);
     useEffect(()=>{
-        axios.get("http://127.0.0.1:8000/api/get-notice?format=json").then(
+        axios.get(`${import.meta.env.VITE_API_URL}/get-notice?format=json`).then(
             (response) => {
                 setNotices(response.data);
             }
@@ -30,7 +30,7 @@ export const NoticeBoard = () => {
 <ul className="list-group my-1" style={{height:'304px',overflowY:'scroll'}}>
     {Object.keys(Notices).map((index) => {
     return (
-    <li className="list-group-item">
+    <li className="list-group-item" key={`notice-${index}`}>
     <a href={Notices[index].href} className="text-decoration-none">
             <FontAwesomeIcon icon={faAngleDoubleRight}/>
             <span className="ms-2">{Notices[index].desc}</span>

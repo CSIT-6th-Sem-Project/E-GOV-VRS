@@ -1,7 +1,7 @@
   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faCarSide,faUserPlus,faMoneyBillTransfer} from "@fortawesome/free-solid-svg-icons";
-import director_general from "../assets/images/dotm-head.jpg";
+import director_general from "../assets/images/dotm-head.png";
 
 import { HomeCarousel } from "../assets/components/HomeCarousel";
 import { NoticeBoard } from "../assets/components/NoticeBoard";
@@ -11,37 +11,18 @@ export const Home = () =>{
     <div className="container-fluid my-2">
         <div className="row">
             {/* Carousel Section begins  */}
-            <div className="col-8">
+            <div className="col-xs-12 col-sm-12">
                 <HomeCarousel/>
             </div>
             {/* Carousel Section ends */}
-            {/* Important Links Sections begins */}
-            <div className="col-4">
-                <div className="border p-1 h-100"> 
-                <div className="bg-body-tertiary">
-                    <span className="text text-muted h5">Important Links</span>    
-                </div>    
-                <div className="p-2">     
-                <a className="btn btn-primary w-100" href="#">
-                    <FontAwesomeIcon icon={faCarSide}/> Online Vehicle Registration</a>
-                <a className="btn btn-primary my-1 w-100" href="#">
-                <FontAwesomeIcon icon={faUserPlus}/>  Driving License Registration</a>
-                <a className="btn btn-primary w-100" href="#">
-                    <FontAwesomeIcon icon={faMoneyBillTransfer}/> Vehicle Tax Payment</a>
-                </div>
 
-               
-                </div>
-
-            </div>
-             {/* Important Links Sections ends */}
-             <hr className="my-2"/>
+             <hr className="my-1"/>
               {/* Notifications Sections begins */}
-                <div className="col-4">
+                <div className="col-sm-12 col-md-4 mt-2">
                 <NoticeBoard/>
                 </div>
              {/* Notifications Sections ends */}
-                <div className = "col-4">
+                <div className = "col-sm-12 col-md-4 mt-2">
                     <div className="border border-success p-1">
                     <div className="bg-body-tertiary">
                         <span className="h5">About Us</span>
@@ -54,7 +35,7 @@ export const Home = () =>{
                     </div>
                 </div>
                 
-                <div className="col-4">
+                <div className="col-sm-12 col-md-4 mt-2">
                     <div className="border border-info p-1">
                     <div className="bg-body-tertiary">
                         <span className="h5">Director General</span>
