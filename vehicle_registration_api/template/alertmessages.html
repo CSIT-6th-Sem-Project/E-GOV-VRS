@@ -1,0 +1,18 @@
+{% load static %}
+{% for message in messages %}
+<div class="col-lg-12 col-md-6 p-2">
+<div class="alert {{message.tags}} alert-dismissible" role="alert">
+    {% if message.tags == "alert-danger" %}
+    <img type="image/svg" src="{% static 'img/icon-no.svg' %}"/>
+    {% elif message.tags == "alert-success" %}
+    <img type="image/svg" src="{% static 'img/icon-yes.svg' %}"/>
+    {% elif message.tags == "alert-info" %}
+    <img type="image/svg" src="{% static 'img/icon-info.svg' %}"/>
+    {% endif %}
+    <small> {{message|escape}}</small>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times</span>
+    </button>
+</div>
+</div>
+{% endfor %}

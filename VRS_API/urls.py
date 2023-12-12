@@ -18,11 +18,15 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-
+from vehicle_registration_api.views import AdminView,ReviewVRS
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/',include('vehicle_registration_api.urls'))
+    path('api/',include('vehicle_registration_api.urls')),
+    path(r'api/auth/',include("knox.urls")),
+    path("",AdminView.as_view(),name="dotm_admin"),
+    path("review/<int:pk>",ReviewVRS.as_view(),name="review_vrs")
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

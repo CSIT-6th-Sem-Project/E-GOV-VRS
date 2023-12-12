@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css" integrity="sha512-XWTTruHZEYJsxV3W/lSXG1n3Q39YIWOstqvmFsdNEEQfHoZ6vm6E9GK2OrF6DSJSpIbRbi+Nn0WDPID9O7xB2Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+    <div class="container w-100">
+            
+        <div class="row my-4 border border-md pd-2">
+            <div class="col-sm-12 col-md-3">
+                <img src="https://raw.githubusercontent.com/CSIT-6th-Sem-Project/E-GOV-VRS/main/VRS-UI-UX/src/assets/logo/gov-logo.png" style="width:110px;height:80px"/>
+             
+            </div>
+            <div class="col-sm-12 col-md-6 text-center">
+                <small class="text text-danger">
+                    Government of Nepal <br/>
+                    Ministry of Physical Infrastructure and Transport
+                </small>
+                <h4 class="text text-danger">Department of Transport Management</h4>
+                <span class="text text-danger fs-6">Minbhawan, Kathmandu</span>
+            </div>
+            <div class="col-12 text-center bg-primary text-white">
+                {{subject}}
+            </div>
+            <div class="col-sm-12 col-md-12 my-2">
+                <i>Dear {{instance.user.first_name}} ji,</i>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <p>{{message}}</p>
+            </div>
+            <div class="col-12 border border-md text-center p-2">
+                For any information you can contact at:
+                <div class="col-md-12 text-center">
+                    Email: <a class="text text-primary" href="mailto:info@dotm.gov.np">info@dotm.gov.np</a>          
+                </div>
+                <div class="col-md-12 text-center">
+                    Contact: <span class="text-danger">01-4574921 ,  01-4574922 </span>         
+                </div>
+    
+            </div>
+        </div>
+
+
+    </div>
+    </body>
+</html>
