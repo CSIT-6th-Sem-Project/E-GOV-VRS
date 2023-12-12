@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 {% for vrs in vrs_single_list %}
-                <div class="col-6  mix {{vrs.status}}">
+                <div class="col-6  mix {{vrs.status}} my-2">
                     {% if vrs.status == 'registered' or vrs.status == 'verified' or vrs.status == 'submitted' %}
                     <div class="card border-success">
                     {% elif vrs.status == 'pending' %}

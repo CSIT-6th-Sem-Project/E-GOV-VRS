@@ -75,14 +75,15 @@ class CardBase(BaseModel):
     fathers_name = models.CharField(max_length=500)
     mothers_name = models.CharField(max_length=500)
     spouse_name = models.CharField(max_length=500,blank=True,default=None)
-    mobile_no = models.BigIntegerField(unique=True)
+    mobile_no = models.BigIntegerField()
 
     citizen_img = models.ImageField(upload_to="citizen",default='')
+    
     class Meta:
         abstract = True
 
 class CitizenshipCard(CardBase):
-    cid = models.BigIntegerField(primary_key=True)
+    cid = models.CharField(max_length=100,primary_key=True)
     citizenship_type = models.CharField(max_length=100,choices=CITIZENSHIP_TYPE)
     
     class Meta:
@@ -136,7 +137,7 @@ class SingleVRS(BaseModel):
     vrs_type = models.CharField(max_length=200)
     vrs_old_owner = models.BigIntegerField(blank=True,null=True) 
     # for individual information
-    vrs_cit_id = models.BigIntegerField()
+    vrs_cit_id = models.CharField(max_length=100)
     # vehicle registration office details:
     vrs_office_province= models.CharField(max_length=200)
     vrs_office =  models.CharField(max_length=200)

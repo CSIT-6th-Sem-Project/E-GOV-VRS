@@ -5,7 +5,7 @@ import {toast} from "react-toastify";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck,faDownload } from "@fortawesome/free-solid-svg-icons";
 
 export const KhaltiTransaction = ({vrs}) => {
     const [spinner,setSpinner] = useState(false)
@@ -89,7 +89,7 @@ export const KhaltiTransaction = ({vrs}) => {
     {paid?
         <>
         <span className="text text-success"><FontAwesomeIcon icon={faCircleCheck} className="text text-success mx-2"/>  paid</span>
-        <a className="btn btn-sm btn-success ms-4" target="_blank" href={`${import.meta.env.VITE_API_URL}/generate-transaction-pdf?Id=${vr.vrsId}`}>
+        <a className="btn btn-sm btn-success ms-4" target="_blank" href={`${import.meta.env.VITE_API_URL}/generate-transaction-pdf?Id=${vrs.vrsId}`}>
             <FontAwesomeIcon icon={faDownload}/> download
         </a>
         </>

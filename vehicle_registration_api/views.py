@@ -41,7 +41,7 @@ class CarouselView(generics.GenericAPIView):
 
     def parse_content(self):
         try:
-            response = requests.get(url).content.decode()
+            response = requests.get(url,verify=False).content.decode()
             soup = BeautifulSoup(response, "lxml")
             carousel = soup.css.select(".owl-carousel .item")
             carousel_dict = {}
@@ -60,12 +60,13 @@ class CarouselView(generics.GenericAPIView):
     def get(self,request):
         carousel = self.parse_content()
         return Response(data=carousel,status=status.HTTP_200_OK)
+    
 class NoticeView(generics.GenericAPIView):
     permission_classes = (permissions.AllowAny,)
     def parse_content(self):
         try:
             notice_dict = {}
-            response = requests.get(url).content.decode()
+            response = requests.get(url,verify=False).content.decode()
             soup = BeautifulSoup(response,'lxml')
             notices = soup.css.select(".sectionNotice")
             # print(notices)
@@ -108,7 +109,7 @@ class TransPortLawView(generics.GenericAPIView):
     def get(self,request):
         law_list = {}
         for index_eng , index_np in self.indexes.items():
-            response = requests.get(self.main_url+index_eng).content.decode()
+            response = requests.get(self.main_url+index_eng,verify=False).content.decode()
             law_list[index_eng+" "+index_np] = self.parse_content(response)
         return Response(data = law_list,status=status.HTTP_200_OK)
     
@@ -197,12 +198,12 @@ class VRSViewSet(viewsets.ModelViewSet):
     serializer_class = VRSSerializer
     queryset = SingleVRS.objects.all()
 
-@login_required
+
 def generate_transaction_pdf(request):
     template_path = 'generate-transaction-pdf.html'
     vrs_xtd = get_object_or_404(SingleVRS_Extended,vrs__vrsId=request.GET["Id"])
-    khalti_tx = get_object_or_404(KhaltiTransactionRecord,vrs=vrs_xtd.vrs,user=request.user)
-    context = {'vrs':vrs_xtd.vrs,'amount':amount_cat[vrs_xtd.vrs.vrs_vehicle_cat],'khalti_tx':khalti_tx}
+    khalti_tx = get_object_or_404(KhaltiTransactionRecord,vrs=vrs_xtd.vrs)
+    context = {'vrs':vrs_xtd.vrs,'khalti_tx':khalti_tx}
 
     # Create a Django response object, and specify content_type as pdf
     response = HttpResponse(content_type='application/pdf')

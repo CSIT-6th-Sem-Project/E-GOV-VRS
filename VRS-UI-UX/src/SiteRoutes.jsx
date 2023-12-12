@@ -9,6 +9,7 @@ import { Single_VRS } from "./pages/VehicleRegistrationForm";
 import { Lab } from "./pages/Lab4";
 import { Accounts } from "./pages/Accounts";
 import { VRSUpdate } from "./pages/updateRegistrationForm";
+import { Test } from "./pages/Practice";
 export const SiteRoute = () => {
     return <>
     <BrowserRouter>
@@ -22,6 +23,7 @@ export const SiteRoute = () => {
             <Route path="/vrs-single" element={<Single_VRS/>}/>
             <Route path="/update-vrs" element={<VRSUpdate/>}/>
             <Route path="/accounts" element={<Accounts/>}/>
+            <Route path="/test" element={<Test/>}/>
         </Route>
         <Route path="/lab4" element={<Lab/>}/>
     </Routes>

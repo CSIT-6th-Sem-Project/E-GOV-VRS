@@ -8,6 +8,7 @@ import { UsersVRSCard } from "../assets/components/UsersVRSCard"
 export const Accounts = () => {
     const auth_user = useSelector(state => state.auth.user)
     const auth_token = useSelector(state => state.auth.token)
+    var none = true
     const [vrs,setVRS] = useState([])
     const fetchVRS = async () => {
         const headers = {
@@ -19,7 +20,11 @@ export const Accounts = () => {
             data:{},
             headers:headers
             }).then((resp)=>{
-            setVRS(resp.data)
+                if(resp.data.length != 0){
+                    setVRS(resp.data)
+                }none = false
+                
+                
         }).catch((error) => {
             toast.warning("Some error occurred when fetching information")       
         })
@@ -47,16 +52,16 @@ export const Accounts = () => {
             <div className="col-12 bg-body-tertiary">
                 List of Registrations
             </div>
-            {vrs.length != 0?
-            
-                <div style={{height:'500px',overflowY:'scroll'}}> 
+            {!none?<Spinner/>:
+            vrs.length != 0 ?
+            <div style={{height:'500px',overflowY:'scroll'}}> 
             {vrs.map((vr) => {
                 return <>
                 <UsersVRSCard vr={vr} token={auth_token}/>
                 </>
             })}
-            {/* </div> */}
-            </div>:<Spinner/>}
+            </div>:<div><h4 className="text text-mute">You have not registered any vehicles</h4></div>
+            }
         </div>
         <div className="col-5 p-2">
             <div className="border border-sm p-2">

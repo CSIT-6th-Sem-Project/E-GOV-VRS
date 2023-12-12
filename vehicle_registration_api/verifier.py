@@ -37,9 +37,9 @@ def citizenship_doc_verification(image,user):
     recogn_digit = re.findall(digit,ocr)
     recogn_name = re.findall(fullnameREgx,ocr)
     recogn_name = [ re.sub(r'full name\.?:','',name)for name in recogn_name ]
-
+    print(recogn_name)
     id_valid = False
-    name_valid = False
+    # name_valid = False
     
     try:
         citizen_card = NationalIdentityCard.objects.get(user=user).citizen_card
@@ -48,7 +48,7 @@ def citizenship_doc_verification(image,user):
     
    
 
-    if len(recogn_name) == 0 and len(recogn_digit) == 0:
+    if len(recogn_digit) == 0:
         return (False, 'document provided are not valid or image is not clear')
     
     if str(citizen_card.cid) in recogn_digit:
@@ -56,11 +56,11 @@ def citizenship_doc_verification(image,user):
     else:
         message =  "documents citizenship id doesnot match in system"
     
-    if citizen_card.full_name in recogn_name:
-        name_valid = True
-    else:
-        message +="\n name in your document doesnot match with system"
+    # if citizen_card.full_name in recogn_name:
+    #     name_valid = True
+    # else:
+    #     message +="\n name in your document doesnot match with system"
 
 
-    return (id_valid and name_valid , message)
+    return (id_valid , message)
 

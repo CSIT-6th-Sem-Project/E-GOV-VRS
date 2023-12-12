@@ -41,7 +41,7 @@ export const Home = () =>{
                         <span className="h5">Director General</span>
                     </div>
                     <img className="img-fluid m-1" style={{height:"240px"}} src={director_general}/>
-                    <h5 className="text text-primary">Shri Narayan Parsad Bhattarai</h5>
+                    <h5 className="text text-primary">The-Raajz Koirala</h5>
                     <h5 className="text text-warning">Director General</h5>
                     </div>
                 </div>

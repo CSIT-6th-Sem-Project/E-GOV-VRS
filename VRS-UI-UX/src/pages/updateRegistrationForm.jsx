@@ -868,7 +868,7 @@ useEffect(() =>{
                         <label htmlFor="formFileMultiple" className="form-label">{vrs_image_upload_list[index]}<span className="text text-danger">*</span><br/>
                         
                         </label>
-                        <input  accept=".png, .jpg, .jpeg" name={index} className={`form-control ${error[index].has_error?"is-invalid":error[index].valid && "is-valid"}`} type="file" onChange={onSelectImageFile} />
+                        <input  accept=".png, .jpg, .jpeg, .jfif" name={index} className={`form-control ${error[index].has_error?"is-invalid":error[index].valid && "is-valid"}`} type="file" onChange={onSelectImageFile} />
                         {error[index].has_error&&<span className="invalid-feedback">
                         {error[index].message}
                          </span>}
